@@ -38,6 +38,8 @@ Private IP addresses are often seen in action:
 
 The divide between public and private IP addresses serves a dual purpose. It ensures that the private network is secure, much like a sanctuary guarded from the outside world. It also helps to maintain the limited quota of public IP addresses available, similar to conservation efforts for endangered species. This balance is essential to ensure the Internet can continue to grow and connect more devices.
 
+[network-image](https://github.com/nagswarnaa/SystemDesignConcepts/edit/main/main-qimg-e3f1b1bc55708868dcb4359241903be9.webp)
+
 ### Network Address Translation (NAT): The Clever Facilitator
 
 Imagine a vast party happening on the Internet, where your private network wants to participate, but there's only one formal invitation, i.e., one public IP address. Here's where NAT, or Network Address Translation, steps in as the clever event organizer.
