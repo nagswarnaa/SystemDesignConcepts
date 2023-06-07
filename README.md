@@ -114,7 +114,7 @@ Choosing between a static or dynamic IP address is like choosing between buying 
 
 Remember, neither static nor dynamic IP addresses affect your Internet speed. They are like the postal system, not the delivery truck. They direct where information needs to go, but they don't control how fast it gets there.
 
-#### Dynamic Host Configuration Protocol (DHCP): The Innkeeper of the Internet
+### Dynamic Host Configuration Protocol (DHCP): The Innkeeper of the Internet
 
 In the interconnected realm of the Internet, where billions of devices are constantly communicating and moving data, how do devices get their unique IP addresses? That's where DHCP, or Dynamic Host Configuration Protocol, comes into play. It's like the innkeeper of the Internet, allocating rooms (or in our case, IP addresses) to guests (devices) and making sure they can find their way around.
 
