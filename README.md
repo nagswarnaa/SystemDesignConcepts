@@ -265,3 +265,28 @@ Each of these measures contributes to enhancing the overall reliability of a sys
 Each of these attributes – scalability, availability, and reliability – is interrelated, and trade-offs often exist among them. For instance, achieving high availability and reliability might require adding redundancies or backups, which could increase complexity and potentially reduce scalability. Therefore, designing and maintaining a digital system that balances these three aspects is a key challenge in computer science and software engineering.
 
 In essence, these attributes serve as key indicators of system performance and resilience. They encapsulate the expectation we have for modern digital systems - that they work efficiently and effectively at scale, are ready for use whenever we need them, and perform their functions consistently and reliably, contributing to a seamless and enjoyable user experience.
+
+## Load Balancing:
+Load balancing, a key concept in computer networking and system architecture, is a method of distributing workloads across multiple computing resources, such as servers, computers, network links, or CPUs. This distribution is designed to optimize resource usage, maximize throughput, minimize response time, and prevent overloading of any single resource.
+
+Load balancing is crucial for ensuring scalability, availability, and reliability of a system:
+
+- **Scalability:** Load balancing allows a system to scale to accommodate increased workloads. By distributing traffic evenly across multiple servers, a load balancer enables a system to handle more requests without overwhelming individual servers. As demand increases, additional servers can be added to the load balancer's pool to further increase capacity.
+- **Availability:** Load balancing contributes to system availability by distributing requests across several servers, ensuring that no single server becomes a point of failure. If one server becomes unavailable, the load balancer redirects incoming requests to the remaining servers. This guarantees that service is uninterrupted and available when users need it.
+- **Reliability:** By ensuring that no single server becomes a bottleneck, load balancing increases system reliability. Also, many load balancers regularly check the "health" of the servers in their pool, removing any that are underperforming or down, further enhancing reliability.
+
+Different types of load balancing include:
+
+- **Round Robin:** This simple method distributes client requests in a circular order to each server in the pool, looping back to the first server when it reaches the end of the list.
+- **Least Connections:** This method directs traffic to the server with the fewest active connections, ideal for situations where sessions have significantly different load.
+- **Least Response Time:** This directs traffic to the server with the fewest active connections and the lowest average response time.
+- **IP Hash:** This uses a hash of the client's IP address to determine which server should handle the request, ensuring that a specific user will consistently reach the same server.
+- **Weighted Distribution:** In this method, administrators can assign a weight to each server based on its capacity, directing a proportionate amount of client requests to each one.
+
+Load balancing can occur at different levels:
+
+- **Network Level:** At this level, the load balancer distributes network traffic to different servers using techniques like DNS round-robin or hardware-based load balancing using network routers.
+- **Server-Level:** Here, the load balancer distributes the workload among different server processes, often using round-robin, least connections, or other load balancing algorithms.
+- **Application-Level:** In this case, load balancing happens at the application layer of the OSI model. The load balancer directs requests to different application servers based on application-specific parameters.
+
+Remember, the choice of load balancing method and the level at which it is implemented can significantly impact the performance and scalability of your system. The specific configuration should be chosen based on the system's unique requirements and constraints
