@@ -190,3 +190,22 @@ The story of TCP and UDP is a testament to the diversity and complexity that for
 In their daily adventures through the metropolis of Cyberspace, they continually encounter new challenges, learn, adapt, and evolve, just like characters in a movie. Sometimes they fail, but they always rise to face the next day, ensuring that every bit and byte reaches its destination.
 
 And so, their story continues, their adventures threading the fabric of our connected world, illustrating the intricate dance of protocols and packets that enables the digital era we live in.
+
+### Domain name Server:
+The Domain Name System (DNS) is a hierarchical and decentralized naming system for devices connected to the Internet or a private network. It is a key protocol that helps users navigate the web and is sometimes referred to as the "phonebook of the Internet."
+
+When you type a URL into a web browser, such as www.google.com, that's a domain name. The DNS translates this domain name into an IP address that computers can understand. Each device connected to the Internet has a unique IP address, which is a string of numbers (and letters, in the case of IPv6). These IP addresses enable computers to identify and communicate with each other. But because these addresses can be hard for humans to remember, we use domain names as a more user-friendly alternative.
+
+The process of resolving a domain name into an IP address happens behind the scenes and usually takes just milliseconds. When you type a URL into your web browser, a query is sent to a DNS server. If the DNS server knows the IP address for that domain name, it will return the address, and your browser can then request the webpage from the server with that IP address.
+
+If the DNS server doesn't know the IP address, it will ask other DNS servers. This process continues until a DNS server is found that can provide the IP address. This hierarchical structure, with different servers responsible for different parts of the DNS namespace, helps distribute the load and ensures that the system can scale to accommodate the billions of devices and web pages on the Internet.
+
+There are four primary types of DNS servers:
+
+- **DNS Resolver:** This is the first stop in a DNS query. When you enter a URL, the query first goes to the DNS resolver, which is typically set by your Internet Service Provider (ISP) or network administrator.
+- **Root Nameserver:** If the DNS resolver does not have the answer in its cache, it queries a root nameserver, which responds with a referral to the relevant Top-Level Domain (TLD) nameserver.
+- **TLD Nameserver:** The TLD nameserver holds information about where to find the next level of DNS server, the Authoritative Nameserver, for each domain within its TLD (e.g., .com, .org, .net).
+- **Authoritative Nameserver:** The authoritative nameserver has the final information about the specific domains it is configured to serve and can provide the exact IP address for a domain name.
+DNS also includes security features to protect against attacks like DNS spoofing, where an attacker redirects a domain name to a different IP address. DNS Security Extensions (DNSSEC) is a suite of extensions that adds extra security to the DNS protocol by enabling DNS responses to be digitally signed.
+
+In essence, DNS is a critical infrastructure of the Internet, acting as the directory enabler that turns human-readable domain names into computer-readable IP addresses, facilitating successful and secure communication between devices on the Internet.
