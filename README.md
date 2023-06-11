@@ -209,3 +209,13 @@ There are four primary types of DNS servers:
 DNS also includes security features to protect against attacks like DNS spoofing, where an attacker redirects a domain name to a different IP address. DNS Security Extensions (DNSSEC) is a suite of extensions that adds extra security to the DNS protocol by enabling DNS responses to be digitally signed.
 
 In essence, DNS is a critical infrastructure of the Internet, acting as the directory enabler that turns human-readable domain names into computer-readable IP addresses, facilitating successful and secure communication between devices on the Internet.
+
+### Scalability: 
+Scalability is the capability of a system, process, or network to handle a growing amount of work, or its potential to be enlarged in order to accommodate that growth. Imagine a small bakery that initially serves a handful of customers each day. As word spreads about the delicious pastries it makes, more customers start to visit. The bakery's success hinges on its ability to scale – to produce more pastries without sacrificing quality. In the digital world, a scalable system is able to handle increasing numbers of requests and deliver consistent performance as usage grows. This can involve scaling up (increasing the capacity of individual components) or scaling out (adding more components to a system).
+
+### Availability:
+Availability refers to the degree to which a system is in a functional state, ready to be used when needed. Think of it as a reliable public transit system. If the trains are always running on time, and rarely break down, the system is highly available. In the context of digital systems, availability is often measured as a percentage, known as uptime. A system with 99.9% uptime, for example, is expected to be unavailable no more than 0.1% of the time. Achieving high availability often involves implementing redundancies and failover mechanisms to ensure that if one part of a system fails, others can pick up the slack.
+
+### Reliability:
+Reliability is the measure of a system's ability to perform its intended function without failure over a specified period of time under certain conditions. Using the bakery example again, reliability could be the consistent quality of the pastries it produces. If every croissant is as buttery and flaky as the last, the bakery is reliable. In the digital realm, a reliable system delivers consistent results, operates without unexpected errors or crashes, and recovers gracefully from any problems that do arise.
+
