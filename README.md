@@ -290,3 +290,17 @@ Load balancing can occur at different levels:
 - **Application-Level:** In this case, load balancing happens at the application layer of the OSI model. The load balancer directs requests to different application servers based on application-specific parameters.
 
 Remember, the choice of load balancing method and the level at which it is implemented can significantly impact the performance and scalability of your system. The specific configuration should be chosen based on the system's unique requirements and constraints
+
+### Auto-Scaling: 
+Auto-scaling, also known as automatic scaling, is a cloud computing feature that allows users to automatically scale cloud services, like virtual machines (VMs) and server capabilities, up or down, based on defined situations or parameters. The primary goal of auto-scaling is to manage and optimize application performance and resource usage.
+
+In the context of cloud computing, this typically means that the number of active servers can be automatically increased during high demand periods to maintain performance, and decreased during lower demand periods to minimize costs. This dynamic adjustment of resources helps ensure that applications have the resources they need when they need them, without paying for idle resources during times of low usage.
+
+Auto-scaling is accomplished using pre-set rules. For instance, you might configure your auto-scaling to add new servers when CPU usage reaches 75% for five consecutive minutes, and to remove servers when CPU usage drops below 25% for five consecutive minutes. The precise conditions under which scaling occurs will depend on the particular needs of your application and its workload patterns.
+
+Auto-scaling can be:
+
+- **Vertical:** In vertical auto-scaling, the resources of an existing server are adjusted. This might mean adding more CPU, RAM or storage to a server.
+- **Horizontal:** In horizontal auto-scaling, additional servers are added to or removed from the pool to match demand.
+
+Auto-scaling offers several benefits, including improved application availability, better cost management, and reduced need for manual intervention. However, it's important to carefully set the parameters for scaling to avoid unnecessary costs or insufficient resources during peak demand. It's also worth noting that auto-scaling isn't appropriate for all applications or workloads. Some workloads might not benefit from the addition of more servers or might require manual intervention to properly scale
