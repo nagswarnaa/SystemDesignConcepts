@@ -289,6 +289,20 @@ Load balancing can occur at different levels:
 - **Server-Level:** Here, the load balancer distributes the workload among different server processes, often using round-robin, least connections, or other load balancing algorithms.
 - **Application-Level:** In this case, load balancing happens at the application layer of the OSI model. The load balancer directs requests to different application servers based on application-specific parameters.
 
+#### Responsibilities of load balancer:
+A load balancer plays a vital role in ensuring the smooth operation and performance of network systems or applications. Here are some of the key responsibilities of a load balancer:
+
+- **Distributing Network Traffic:** The primary responsibility of a load balancer is to distribute incoming network traffic across a group of backend servers. This enhances the application's responsiveness and availability by ensuring no single server bears too much load.
+- **Ensuring High Availability and Redundancy:** By distributing traffic across multiple servers, a load balancer ensures that if one server fails, the workload is automatically passed to another server. This redundancy leads to high availability.
+- **Health Checks:** Load balancers often perform regular health checks on the servers in their pool to ensure they are responsive and working correctly. If a server fails to respond or is underperforming, the load balancer can redirect traffic to healthier servers.
+- **Session Persistence:** Also known as "sticky sessions", some load balancers can route the requests of a particular session (identified typically by IP or cookies) to the same server, which is important for applications that maintain state information.
+- **SSL Termination:** To save resources on backend servers, some load balancers decrypt SSL traffic at the load balancer and forward unencrypted requests to the servers. The responses are then encrypted at the load balancer before being sent to the client. This process is known as SSL termination or offloading.
+- **Scalability:** A load balancer can manage an increase in traffic by distributing it across additional servers. This capacity to handle growth in demand makes load balancers integral to the scalability of a network or application.
+- **Security:** Load balancers can provide additional security to applications. For instance, they can defend against DDoS attacks by managing and distributing large volumes of incoming traffic across several servers. Some advanced load balancers can also provide web application firewall (WAF) capabilities.
+- **Layer 7 Routing:** Some advanced load balancers can make routing decisions based on the content of the message, such as the HTTP header or the URL requested, allowing more sophisticated distribution strategies.
+
+By handling these responsibilities, load balancers play a crucial role in maintaining the performance, availability, and security of network systems and applications.
+
 Remember, the choice of load balancing method and the level at which it is implemented can significantly impact the performance and scalability of your system. The specific configuration should be chosen based on the system's unique requirements and constraints
 
 ### Auto-Scaling: 
