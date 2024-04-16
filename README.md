@@ -1,6 +1,9 @@
 # System Design Concepts
 1. [Internet Protocol](#internet-protocol)
 2. [DNS](#domain-name-server)
+3. [Scalability](#scalability)
+4. [Load Balancing](#load-balancing)
+5. [Auto Scaling](#auto-scaling)
 
 ## Internet Protocol:
 
