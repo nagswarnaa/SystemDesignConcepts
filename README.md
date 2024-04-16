@@ -1,5 +1,6 @@
 # System Design Concepts
 1. [Internet Protocol](#internet-protocol)
+2. [DNS](#domain-name-server)
 
 ## Internet Protocol:
 
