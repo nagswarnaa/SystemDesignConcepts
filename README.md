@@ -1,6 +1,6 @@
 # System Design Concepts
 
-## Internet Protocol (IP): The Digital Postal System
+## Internet Protocol:
 
 In the vast digital universe of interconnected devices, there is a fundamental law that ensures order and communication. This law is the Internet Protocol (IP). It's like the postal system of the Internet, assigning addresses and ensuring the delivery of data packets. This magical standard is what allows you to receive an email, stream a video, or browse a website.
 
