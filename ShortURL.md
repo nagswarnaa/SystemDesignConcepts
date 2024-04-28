@@ -59,6 +59,33 @@ The redirection process from a tiny URL to the original long URL happens very qu
    - The web servers used (like Nginx or Apache) are highly efficient at handling HTTP requests and can quickly redirect users with minimal delay.
    - Software optimizations include streamlined code paths for redirection processes, ensuring that as few computational steps as possible are needed to translate a short URL back to its original form.
 
+### Redirection
+
+Redirection from a tiny URL to the original URL involves a simple yet efficient process. Here’s a detailed step-by-step explanation:
+
+1. **Clicking the Tiny URL:**
+   When a user clicks on a tiny URL (for example, `bit.ly/abc123`), their browser sends an HTTP request to the server that hosts the shortening service. This request includes the path component of the URL (`abc123` in this case).
+
+2. **Server Receives Request:**
+   The server hosting the tiny URL service receives the HTTP request. It parses the request to extract the unique identifier, which corresponds to the shortened part of the URL.
+
+3. **Lookup the Identifier:**
+   The server uses the unique identifier to perform a lookup in its database. This database stores mappings between the shortened identifiers and the original URLs. The lookup process is typically very fast, often optimized with indexes or caching for efficiency.
+
+4. **Redirect Response:**
+   Once the original URL is retrieved from the database, the server sends an HTTP response back to the user's browser. This response is a special type of HTTP status code:
+   - **301 Moved Permanently:** Indicates that the URL of the requested resource has been changed permanently. This is often used for URL shortening to ensure that search engines and other services update their links.
+   - **302 Found (Temporary Redirect):** Indicates that the URL of the requested resource has been temporarily changed. This might be used in situations where the redirection might change in the future.
+   - **307 Temporary Redirect** or **308 Permanent Redirect:** These are newer codes similar to 302 and 301, respectively, but with stricter behavior concerning the method used in the subsequent request.
+
+5. **Browser Follows Redirect:**
+   The user's browser automatically follows the redirection by making a new HTTP request to the original URL provided in the redirection response. This happens without any further interaction from the user.
+
+6. **Access the Original URL:**
+   The browser retrieves the content from the original URL, and the webpage is displayed to the user. This final step completes the process from clicking the tiny URL to viewing the intended webpage.
+
+This entire process, from clicking the tiny URL to accessing the original webpage, typically happens within a few milliseconds, thanks to the efficiency of modern web technologies and network communications. The user experiences it as almost instantaneous access to the desired website.
+
 6. **HTTP Redirection Codes:**
    - The actual redirection from the tiny URL to the original URL is typically achieved using HTTP status codes like 301 (permanent redirect) or 302 (temporary redirect). These are standard responses in HTTP protocol, handled directly by the user's browser quickly and efficiently.
 
