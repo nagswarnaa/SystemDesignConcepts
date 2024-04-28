@@ -22,6 +22,8 @@ TinyURL is a URL shortening service that allows users to convert long URLs into 
 
 TinyURL, since its inception in 2002, has become one of the foundational tools on the internet for URL shortening, standing out for its simplicity and effectiveness. It is part of a broader category of web services that enhance usability and functionality of web browsing and sharing.
 
+### Length of ShortURL
+
 When a long URL is converted to a tiny URL, the length of the resulting shortened URL typically depends on the service used. Here are some common characteristics:
 
 1. **Fixed-Length Short URLs:** Many URL shortening services, like Bit.ly or TinyURL, create short links that are a fixed length. This length varies between services but usually ranges from 6 to 10 characters after the domain name. For example, a Bit.ly link might look like `bit.ly/abc123`, where `abc123` is a 6-character unique identifier.
@@ -32,7 +34,7 @@ When a long URL is converted to a tiny URL, the length of the resulting shortene
 
 In general, the goal of a tiny URL is to be significantly shorter than the original URL, especially when the original URL is very long, sometimes containing hundreds of characters. The shortening process involves using a unique identifier that maps to the original URL in the service's database. This makes it possible to redirect anyone who clicks on the tiny URL to the original URL.
 
-### Length of ShortURL
+### Steps
 
 The process of converting a long URL into a tiny URL using a URL shortening service typically involves several steps:
 
@@ -61,6 +63,8 @@ The process of converting a long URL into a tiny URL using a URL shortening serv
    Many URL shortening services offer tracking and analytical tools that allow the creator of the tiny URL to see how many times it has been clicked, from what locations, and using what devices. This information can be valuable for marketing and informational purposes.
 
 Overall, URL shortening is a practical tool for simplifying long URLs and providing additional features like tracking and analytics, making it easier to manage and share URLs.
+
+### Faster Retrieval
 
 The redirection process from a tiny URL to the original long URL happens very quickly due to several technical optimizations and the straightforward nature of the operation. Here's a breakdown of why this redirection can be so fast:
 
@@ -116,6 +120,7 @@ This entire process, from clicking the tiny URL to accessing the original webpag
 Because of these combined factors, when a user clicks on a tiny URL, the time between their click and the webpage starting to load is usually just a few milliseconds, leading to a seamless user experience.
 
 ## How data is stored and retrieved 
+
 Storing millions of tiny URLs efficiently and ensuring quick access for redirection is a critical requirement for any URL shortening service. Here's how these services typically manage such a large volume of data:
 
 ### 1. **Database Systems**
