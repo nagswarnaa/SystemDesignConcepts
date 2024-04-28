@@ -1,5 +1,27 @@
 ## URL Shortner
 
+TinyURL is a URL shortening service that allows users to convert long URLs into shorter, more manageable links that are easier to share and use. Here's a general overview of what TinyURL offers and how it functions:
+
+### Purpose and Use
+- **Simplifying Links:** TinyURL simplifies sharing long and complex URLs by shortening them into fewer characters. This is particularly useful in contexts like social media, emails, or text messages where space is limited or where long URLs may break.
+- **Ease of Sharing:** Short URLs are more visually appealing and less intimidating for users to click on, facilitating easier sharing of links.
+
+### Features
+- **No Account Needed:** Users can create short URLs without needing to register or log in, which simplifies the process and makes it accessible to everyone.
+- **Custom Aliases:** While the service automatically generates a short link, users also have the option to customize the latter part of the URL to make it recognizable or relevant to the content it links to (if the desired alias is available).
+- **Redirection:** Like other URL shorteners, TinyURL redirects anyone who clicks on the short link to the original long URL.
+
+### Technical Mechanism
+- **URL Conversion:** When a user submits a URL, TinyURL generates a unique identifier that serves as the suffix for the shortened URL. This identifier is mapped to the original URL in TinyURL’s database.
+- **Database Storage:** TinyURL stores the mapping of short codes to original URLs in a database, which it queries to redirect users when a short link is accessed.
+- **Redirects:** Users who click on a TinyURL link are redirected via HTTP status codes (commonly 301 or 302), which instruct the browser to fetch the original URL.
+
+### Reliability and Accessibility
+- **Permanence:** The shortened URLs created by TinyURL are generally permanent unless specified otherwise, which means they should continue to redirect to the original URL indefinitely as long as TinyURL's services are operational.
+- **Global Access:** The service is available globally and can be used by anyone with internet access to shorten URLs.
+
+TinyURL, since its inception in 2002, has become one of the foundational tools on the internet for URL shortening, standing out for its simplicity and effectiveness. It is part of a broader category of web services that enhance usability and functionality of web browsing and sharing.
+
 When a long URL is converted to a tiny URL, the length of the resulting shortened URL typically depends on the service used. Here are some common characteristics:
 
 1. **Fixed-Length Short URLs:** Many URL shortening services, like Bit.ly or TinyURL, create short links that are a fixed length. This length varies between services but usually ranges from 6 to 10 characters after the domain name. For example, a Bit.ly link might look like `bit.ly/abc123`, where `abc123` is a 6-character unique identifier.
@@ -9,6 +31,8 @@ When a long URL is converted to a tiny URL, the length of the resulting shortene
 3. **Domain Length:** The overall length of a tiny URL also includes the length of the domain used by the shortening service (e.g., `bit.ly`, `tinyurl.com`).
 
 In general, the goal of a tiny URL is to be significantly shorter than the original URL, especially when the original URL is very long, sometimes containing hundreds of characters. The shortening process involves using a unique identifier that maps to the original URL in the service's database. This makes it possible to redirect anyone who clicks on the tiny URL to the original URL.
+
+### Length of ShortURL
 
 The process of converting a long URL into a tiny URL using a URL shortening service typically involves several steps:
 
