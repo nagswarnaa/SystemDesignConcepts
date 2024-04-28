@@ -90,3 +90,40 @@ This entire process, from clicking the tiny URL to accessing the original webpag
    - The actual redirection from the tiny URL to the original URL is typically achieved using HTTP status codes like 301 (permanent redirect) or 302 (temporary redirect). These are standard responses in HTTP protocol, handled directly by the user's browser quickly and efficiently.
 
 Because of these combined factors, when a user clicks on a tiny URL, the time between their click and the webpage starting to load is usually just a few milliseconds, leading to a seamless user experience.
+
+## How data is stored and retrieved 
+Storing millions of tiny URLs efficiently and ensuring quick access for redirection is a critical requirement for any URL shortening service. Here's how these services typically manage such a large volume of data:
+
+### 1. **Database Systems**
+URL shortening services use robust database systems to store the mappings between shortened URLs and their original URLs. These systems are chosen for their performance in high-read scenarios:
+
+- **Relational Databases:** Traditional SQL databases like MySQL or PostgreSQL can be used, with optimizations for read performance, such as indexing on the shortened URL key to speed up lookup times.
+- **NoSQL Databases:** Many services opt for NoSQL databases like MongoDB, Cassandra, or Redis because of their ability to handle large volumes of data with high input/output operations per second. These databases excel in scalability and performance for applications that don't require complex joins or transactions.
+
+### 2. **Data Structure**
+The typical data structure for storing a tiny URL involves:
+- A unique identifier (the part of the URL that is shortened).
+- The original URL.
+- Optionally, metadata such as creation date, expiration date, the number of times the URL has been accessed, the creator’s information, etc.
+
+### 3. **Highly Optimized Key-Value Stores**
+For extremely high-performance needs, some services use key-value stores where the key is the shortened part of the URL, and the value is the original URL:
+- **Key-Value Stores:** Technologies like Redis are particularly well-suited for this role due to their in-memory capabilities, providing extremely fast data retrieval.
+
+### 4. **Scalability**
+To handle growth and a high number of requests, URL shortening services design their architecture for scalability:
+- **Horizontal Scaling:** Adding more servers to handle increased load. This is effective in services with high read and write operations.
+- **Load Balancing:** Distributing incoming network traffic across multiple servers to ensure no single server bears too much load, which enhances the speed and availability of resources.
+
+### 5. **Caching**
+Caching frequently accessed URLs can significantly reduce database load and improve response times:
+- **In-memory Caches:** Tools like Memcached or Redis cache popular URLs directly in RAM. This allows for sub-millisecond retrieval times, dramatically speeding up the redirection process.
+
+### 6. **Content Delivery Networks (CDNs)**
+Although not directly involved in storing the URLs, CDNs can be used to cache the landing pages or redirect pages closer to the user's location, reducing the time taken to load the initial content after redirection.
+
+### 7. **Data Partitioning**
+As the database grows, the data can be partitioned across different tables or even different databases to keep the system manageable and maintain performance:
+- **Sharding:** Splitting the database into smaller, more manageable pieces, where each shard handles a portion of the traffic. This can be based on the hash of the shortened URL or other attributes.
+
+By leveraging these technologies and strategies, URL shortening services can manage millions of URLs efficiently, ensuring fast access and reliability even under heavy load. This infrastructure setup is crucial for maintaining performance as the service scales.
