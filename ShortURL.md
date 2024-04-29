@@ -155,4 +155,55 @@ Although not directly involved in storing the URLs, CDNs can be used to cache th
 As the database grows, the data can be partitioned across different tables or even different databases to keep the system manageable and maintain performance:
 - **Sharding:** Splitting the database into smaller, more manageable pieces, where each shard handles a portion of the traffic. This can be based on the hash of the shortened URL or other attributes.
 
-By leveraging these technologies and strategies, URL shortening services can manage millions of URLs efficiently, ensuring fast access and reliability even under heavy load. This infrastructure setup is crucial for maintaining performance as the service scales.
+Let's go through a detailed example of calculating the system requirements for a hypothetical URL shortening service similar to TinyURL. This example will cover the storage, database, and network considerations for handling 100 million URL shortening requests per month.
+
+### 1. Storage Requirements
+As previously calculated, let's recap the assumptions and find the storage requirement:
+- **Original URL Length**: Average of 100 characters = 100 bytes (assuming UTF-8 encoding).
+- **Short URL Identifier**: 6 bytes (assuming a simple alphanumeric code).
+- **Metadata**: 100 bytes (timestamps, access counts, creator ID).
+- **Total per Entry**: 100 + 6 + 100 = 206 bytes.
+
+**Monthly Storage Calculation**:
+- 100 million URLs × 206 bytes = 20.6 billion bytes = 20.6 GB.
+
+**Annual Storage Requirement**:
+- 20.6 GB/month × 12 = 247.2 GB per year.
+
+### 2. Database Design
+For handling high volumes of data with quick access requirements:
+- **Database Type**: NoSQL (e.g., Cassandra or DynamoDB) for high write and read throughput and scalability.
+- **Partitioning**: Sharding based on hashed values of the URL or a range of identifiers to distribute data evenly across multiple servers.
+- **Replication**: Ensure data availability and durability by replicating data across different nodes or regions.
+
+### 3. Network Bandwidth Considerations
+Estimating the bandwidth needs assuming each shortening and redirection involves small data packets:
+- **Average Request Size**: Let's estimate 500 bytes per request (including HTTP headers).
+- **Average Response Size**: Approximately 300 bytes (smaller for redirects which just include headers and the URL).
+
+**Monthly Bandwidth for Requests**:
+- 100 million × 500 bytes = 50 billion bytes = 50 GB.
+
+**Monthly Bandwidth for Responses**:
+- 100 million × 300 bytes = 30 billion bytes = 30 GB.
+
+**Total Monthly Bandwidth**:
+- 50 GB + 30 GB = 80 GB.
+
+### 4. Server Specifications
+To handle this volume of traffic and data:
+- **Load Balancers**: To distribute incoming requests evenly across servers.
+- **Server Count**: Based on expected traffic, let's say each server can handle 1,000 requests per minute efficiently:
+  - 100 million requests per month = \(\frac{100,000,000}{30 \times 24 \times 60}\) ≈ 2,315 requests per minute.
+  - If one server handles 1,000 requests/minute, you would need at least 3 servers for handling peak loads and redundancy.
+
+### 5. Redundancy and Failover
+Ensure high availability:
+- **Redundancy**: Deploy at least one redundant server in each critical component of the architecture.
+- **Data Backup**: Regular backups and multi-region deployment if using a cloud service to guard against data loss and region-specific failures.
+
+### 6. Security Measures
+- **Encryption**: Encrypt data in transit using SSL/TLS and at rest to protect user data.
+- **Rate Limiting**: Implement to prevent abuse of the service and denial of service attacks.
+
+This system design aims to provide a resilient, scalable, and efficient service capable of handling substantial loads with reliability. Adjustments may be needed based on specific operational feedback and real-world performance metrics.
