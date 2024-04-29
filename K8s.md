@@ -72,3 +72,78 @@ Containers have become a key component of modern software development and deploy
    - To run an application, you typically use Docker commands or a Docker Compose file (if your application consists of multiple containers). For example, using the command `docker run` followed by the name of the image will start a new container based on that image and get the application running inside that container.
 
 Thus, Docker is very effective for running applications consistently across different environments, simplifying development, testing, and deployment processes.
+## Running NextJS application on Docker
+
+Running a Next.js application in Docker involves several steps: creating a Dockerfile to define how the Docker image should be built, possibly defining a `.dockerignore` file to exclude files from the Docker context, building the Docker image, and then running a container based on that image. Here's a step-by-step guide to help you get started:
+
+### 1. Create a Dockerfile
+
+First, you'll need a Dockerfile that specifies how to build your Next.js application. Below is an example of a Dockerfile for a typical Next.js project:
+
+```dockerfile
+# Step 1: Use an official Node.js image as the base
+FROM node:14
+
+# Step 2: Set the working directory inside the container
+WORKDIR /app
+
+# Step 3: Copy package.json and package-lock.json (or yarn.lock)
+COPY package*.json ./
+# If using Yarn, uncomment the next line
+# COPY yarn.lock ./
+
+# Step 4: Install dependencies
+RUN npm install
+# If using Yarn, use `yarn install` instead
+
+# Step 5: Copy the rest of your Next.js app's source code
+COPY . .
+
+# Step 6: Build your Next.js application
+RUN npm run build
+
+# Step 7: Define the command to run your app
+CMD ["npm", "start"]
+
+# Step 8: Expose the port the app runs on
+EXPOSE 3000
+```
+
+### 2. Create a .dockerignore File
+
+A `.dockerignore` file can help you reduce build context by excluding files and directories that are not necessary for building the Docker image, similar to a `.gitignore` file. Here's an example:
+
+```plaintext
+node_modules
+.next
+.git
+.npm
+```
+
+### 3. Build the Docker Image
+
+With the Dockerfile and `.dockerignore` file in place, you can build the Docker image. Run this command in the directory containing your Dockerfile:
+
+```bash
+docker build -t nextjs-app .
+```
+
+This command builds an image with the tag `nextjs-app` based on the instructions in your Dockerfile.
+
+### 4. Run Your Next.js Application
+
+Once the image is built, you can run your application by starting a container from the image:
+
+```bash
+docker run -p 3000:3000 nextjs-app
+```
+
+This command runs the container and maps port 3000 of the container to port 3000 on your host, allowing you to access the application by navigating to `http://localhost:3000` in your web browser.
+
+### Additional Tips
+
+- **Development Environment:** If you're setting up Docker for development, consider using volume mounts to sync the code between your host and the container, allowing live updates without rebuilding the image.
+- **Environment Variables:** You can pass environment variables to Docker using the `-e` option with the `docker run` command, or manage them through an environment file specified with `--env-file`.
+- **Using Yarn:** If you prefer using Yarn instead of npm, adjust the Dockerfile commands to use Yarn (e.g., `yarn install`, `yarn build`).
+
+This setup should help you containerize and run your Next.js application effectively with Docker, making it more portable and easier to deploy and scale.
