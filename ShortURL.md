@@ -157,6 +157,9 @@ As the database grows, the data can be partitioned across different tables or ev
 
 Let's go through a detailed example of calculating the system requirements for a hypothetical URL shortening service similar to TinyURL. This example will cover the storage, database, and network considerations for handling 100 million URL shortening requests per month.
 
+![image](https://github.com/nagswarnaa/SystemDesignConcepts/assets/36414037/2d757110-4ff0-4045-af9f-359a731ff5a3)
+
+
 ### 1. Storage Requirements
 As previously calculated, let's recap the assumptions and find the storage requirement:
 - **Original URL Length**: Average of 100 characters = 100 bytes (assuming UTF-8 encoding).
