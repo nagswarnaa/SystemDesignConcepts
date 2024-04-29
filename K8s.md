@@ -50,4 +50,25 @@ Containers are commonly used in:
 - **Microservices:** Each part of an application can run in its own container, independent of others, which simplifies updates, scaling, and maintenance.
 - **DevOps:** Containers support continuous integration and continuous delivery (CI/CD) practices by allowing developers to quickly build, test, and deploy applications in an agile manner.
 
-Containers have become a key component of modern software development and deployment strategies, helping streamline and simplify operations across diverse environments.
+Containers have become a key component of modern software development and deployment strategies, helping streamline and simplify operations across diverse environments. Docker can run applications by encapsulating them inside containers. When you run an application in Docker, you're using Docker to create, manage, and run the containers that house your application. Here's how this works in more detail:
+
+### How Docker Runs Applications
+
+1. **Container Images:**
+   - An application to be run using Docker needs to be packaged into a Docker container image first. This image includes the application itself along with all necessary dependencies, libraries, and configuration files.
+   - These images are typically built from a set of instructions specified in a file called a Dockerfile.
+
+2. **Creating Containers:**
+   - Once you have a Docker image, Docker can use this image to create one or more containers. Each container is a running instance of the image.
+   - You can start, stop, move, and delete containers without affecting the underlying image, allowing you to easily manage the application's lifecycle.
+
+3. **Isolation and Resources:**
+   - Docker provides each container with its own isolated runtime environment, ensuring that the application has its specified resources (CPU, memory, etc.) and that it doesn’t interfere with other containers or the host system.
+
+4. **Networking and Communication:**
+   - Docker allows containers to communicate with each other and with the outside world through defined networking interfaces. This is crucial for applications that have multiple components interacting with each other (e.g., microservices).
+
+5. **Running the Application:**
+   - To run an application, you typically use Docker commands or a Docker Compose file (if your application consists of multiple containers). For example, using the command `docker run` followed by the name of the image will start a new container based on that image and get the application running inside that container.
+
+Thus, Docker is very effective for running applications consistently across different environments, simplifying development, testing, and deployment processes.
