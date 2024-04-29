@@ -147,3 +147,96 @@ This command runs the container and maps port 3000 of the container to port 3000
 - **Using Yarn:** If you prefer using Yarn instead of npm, adjust the Dockerfile commands to use Yarn (e.g., `yarn install`, `yarn build`).
 
 This setup should help you containerize and run your Next.js application effectively with Docker, making it more portable and easier to deploy and scale.
+
+## Running Spring Boot Application in Docker 
+
+To set up a Spring Boot application for development with Docker, including automatic rebuilding and running with changes, you'll follow similar steps to those for Next.js but adapted for a Java environment. Here’s a comprehensive guide:
+
+### 1. Create a Dockerfile for Development
+
+For a Spring Boot application, your Dockerfile should be set up to compile and run your code in a way that supports live reloading. Spring Boot with Spring DevTools can help achieve live reloading in a local development environment. Here's an example Dockerfile:
+
+```dockerfile
+# Use an official Java runtime as the base image
+FROM openjdk:11
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the Maven or Gradle wrapper
+# For Maven
+COPY mvnw .
+COPY .mvn .mvn
+# For Gradle
+# COPY gradlew .
+# COPY gradle gradle
+
+# Copy your build file (pom.xml for Maven, build.gradle for Gradle)
+COPY pom.xml .
+# For Gradle
+# COPY build.gradle .
+
+# Copy the source code
+COPY src src
+
+# Install dependencies and build the application (skip if you prefer to do this on host)
+RUN ./mvnw install -DskipTests
+# For Gradle
+# RUN ./gradlew build -x test
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Run the application
+CMD ["java", "-jar", "target/myapplication-0.0.1-SNAPSHOT.jar"]
+# For Gradle
+# CMD ["java", "-jar", "build/libs/myapplication-0.0.1-SNAPSHOT.jar"]
+```
+
+### 2. Set Up Live Reloading
+
+To enable live reloading, you’ll need to include Spring DevTools in your project:
+
+- **Maven:** Add the following dependency to your `pom.xml`:
+  ```xml
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>development</scope>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+  ```
+
+- **Gradle:** Add the following to your `build.gradle`:
+  ```groovy
+  dependencies {
+      developmentOnly 'org.springframework.boot:spring-boot-devtools'
+  }
+  ```
+
+Spring DevTools enables automatic restarts of your application when code changes are detected. However, note that for these changes to be detected inside a Docker container, you must mount your source code as a Docker volume.
+
+### 3. Docker Run Command with Volume
+
+Run your Docker container with a volume that links your local project directory to the `/app` directory in the container. This setup allows the container to reflect changes made to your local source code:
+
+```bash
+docker run -p 8080:8080 -v $(pwd):/app my-spring-boot-app
+```
+
+This command maps the current directory on your host to `/app` in the container, ensuring that changes made locally are visible inside the container.
+
+### 4. Handling Live Reloading in Docker
+
+While Spring DevTools works well locally, it might not always detect filesystem changes when running inside a Docker container due to how different OS handle file system events. To mitigate this, ensure your IDE or build setup is configured to trigger a full restart or recompilation that DevTools can detect when files change.
+
+### 5. Additional Configurations
+
+- **Security and Permissions:** Similar to the Node.js setup, ensure you handle file permissions correctly, especially when installing dependencies or running build commands as the root user in Docker.
+
+- **Optimize Build Speed:** Consider using Docker’s layer caching effectively by ordering your Dockerfile commands correctly. For instance, dependencies should be installed before copying source code, as dependencies change less frequently than source code.
+
+### Conclusion
+
